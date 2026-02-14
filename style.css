@@ -1,6 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:root {
+  --txt-color: #282828;
+  --bg-color: #ffffff;
+  color: var(--txt-color);
+  background: var(--bg-color);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --txt-color: #f0f0f0;
+    --bg-color: #1c1c1c;
+  }
+}
 body {
   margin: 0;
   padding: 30px;
-  color: azure;
-  background: #000;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  --height: 30px;
+
+  input {
+    height: var(--height);
+    margin-top: 8px;
+
+    &[type="number"] {
+      width: 60px;
+      padding: 5px;
+      background: transparent;
+      border: 1px solid #8d8d8d;
+      color: var(--txt-color);
+
+      &:focus {
+        outline: double;
+        outline-offset: -2px;
+        appearance: none !important;
+      }
+    }
+  }
+
+  button {
+    min-width: 80px;
+    height: var(--height);
+    border-radius: 2px;
+    cursor: crosshair;
+    border: none;
+  }
+  .multiply-sign {
+    height: var(--height);
+    line-height: var(--height);
+    font-family: sans-serif;
+  }
 }

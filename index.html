@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>This is a headline</h1>
-  <h2>This is heading lavel 2</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, soluta. <a href="#">example link</a> <img src="client.png" alt=""></p>
+  <form id="price-form">
+    <h2>Add price/sqft:</h2>
+    <input type="number" name="price" placeholder="Price">
+    <input type="submit" value="Add Price">
+  </form>
+  <h3 id="price-display">Add price/sqft:</h3>
+  <form id="values-form">
+    <h2>Add value in feet(s):</h2>
+    <div class="form-row">
+      <div class="form-col">
+        <label for="width-foot">Width</label><br>
+        <input type="number" name="width-foot" id="width-foot" min="0" max="99">
+        <input type="number" name="width-inch" id="width-inch" min="0" max="12">
+      </div>
+      <span class="multiply-sign">
+        X
+      </span>
+      <div class="form-col">
+        <label for="height-foot">Height</label><br>
+        <input type="number" name="height-foot" id="height-foot" min="0" max="99">
+        <input type="number" name="height-inch" id="height-inch" min="0" max="12">
+      </div>
+      <button name="any" value="add">Add</button>
+    </div>
+  </form>
+  <div class="list-wrapper">
+    <h3>All Values:</h3>
+    <ul class="value-list">
+      <li>10'2"*8'6"</li>
+    </ul>
+  </div>
+
+  <script>
+    const valueForm = document.getElementById('values-form');
+    
+    valueForm.addEventListener("submit", function(event){
+      event.preventDefault();
+      const formData = new FormData(this);
+      const wFt = formData.get('width-foot');
+      const wIn = formData.get('width-inch');
+      const hFt = formData.get('height-foot');
+      const hIn = formData.get('height-inch');
+      console.log({wFt, wIn,
+hFt,
+hIn});
+      this.reset();
+    })
+  </script>
 </body>
 </html>
